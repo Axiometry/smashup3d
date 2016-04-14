@@ -1,0 +1,6 @@
+{
+  "name": "SmashUp 3D",
+  "description": "SmashUp -- in fewer dimensions!",
+  "image": "heroku/scala",
+  "addons": []
+}
