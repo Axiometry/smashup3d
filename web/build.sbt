@@ -3,12 +3,12 @@ import sbt.project
 
 val projectVersion = "0.1-SNAPSHOT"
 
-name := "smashup-online"
+name := "smashup3d"
 version := projectVersion
 
 lazy val server = (project in file("server")).settings(
-  //name := "smashup-online-server",
-  //version := projectVersion,
+  name := "smashup3d-server",
+  version := projectVersion,
   scalaVersion := "2.11.8",
   scalaJSProjects := Seq(client),
   pipelineStages := Seq(scalaJSProd, gzip),
@@ -23,13 +23,15 @@ lazy val server = (project in file("server")).settings(
     "org.webjars" % "bootstrap" % "3.3.6",
     "com.lihaoyi" %% "scalatags" % "0.5.4"
   ),
-  herokuAppName in Compile := "my-app",
+  herokuAppName in Compile := "smashup3d",
   herokuSkipSubProjects in Compile := false
 ).enablePlugins(PlayScala).
   aggregate(projectToRef(client)).
   dependsOn(sharedJvm)
 
 lazy val client = (project in file("client")).settings(
+  name := "smashup3d-client",
+  version := projectVersion,
   scalaVersion := "2.11.8",
   persistLauncher := false,
   persistLauncher in Test := false,
